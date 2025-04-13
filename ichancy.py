@@ -3,7 +3,6 @@ import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, Update,error
 from telegram.ext import ApplicationBuilder,ConversationHandler, CommandHandler, ContextTypes, MessageHandler, filters, CallbackContext,CallbackQueryHandler
 from telegram.error import TimedOut
-from PIL import Image
 # from rembg import remove
 import requests
 
