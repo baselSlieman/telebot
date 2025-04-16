@@ -1,0 +1,1721 @@
+2025-04-14 17:40:11,296 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-14 17:40:11,297 - telegram.ext.Application - INFO - Application started
+2025-04-14 17:40:18,954 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:40:18,956 - apscheduler.scheduler - INFO - Removed job abedaa1df2034ea1b50c23b446f7b385
+2025-04-14 17:40:18,958 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:43:46,798 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-14 17:43:46,799 - telegram.ext.Application - INFO - Application started
+2025-04-14 17:44:05,825 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:44:07,536 - apscheduler.scheduler - INFO - Removed job ba54606d0a074a2798faa8751a21bc67
+2025-04-14 17:44:07,701 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:44:12,108 - apscheduler.scheduler - INFO - Removed job 2fbcc53c9e824868a0f1d14aae22fbd2
+2025-04-14 17:44:12,346 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:44:27,761 - apscheduler.scheduler - INFO - Removed job f928f49cb20f4890b9551ec8270270e3
+2025-04-14 17:44:32,954 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\python\telegram\telebot_repo\telebot\ichancy.py", line 349, in ninth_question
+    await update.message.reply_text("\U0001f4b5 \u0623\u062f\u062e\u0644 \u0645\u0628\u0644\u063a \u0627\u0644\u0633\u062d\u0628:")
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_message.py", line 1775, in reply_text
+    return await self.get_bot().send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<20 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 2977, in send_message
+    return await super().send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 1091, in send_message
+    return await self._send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 618, in _send_message
+    result = await super()._send_message(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 803, in _send_message
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 294, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2025-04-14 17:45:25,622 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:45:28,857 - apscheduler.scheduler - INFO - Removed job 7e3f2339cab84c298c4b5c9dc6139fe9
+2025-04-14 17:45:29,636 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:45:37,722 - apscheduler.scheduler - INFO - Removed job d48d273224e54431aca1f0ba04f68d7a
+2025-04-14 17:46:15,934 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:46:20,011 - apscheduler.scheduler - INFO - Removed job 241b48ee204d40fc9b005dc60c30a3c5
+2025-04-14 17:46:20,185 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:46:34,938 - apscheduler.scheduler - INFO - Removed job 88e80451118645f8b8bcedbbffddb5b5
+2025-04-14 17:46:36,073 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:46:42,872 - apscheduler.scheduler - INFO - Removed job b1705710deb14817a0568471c30a5191
+2025-04-14 17:46:47,222 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:46:48,966 - apscheduler.scheduler - INFO - Removed job adbcd83f2f6742e785d114ade06e009a
+2025-04-14 17:46:49,173 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:46:50,635 - apscheduler.scheduler - INFO - Removed job a40151b49402436ba4e67577b53580b3
+2025-04-14 17:46:50,784 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:46:53,773 - apscheduler.scheduler - INFO - Removed job c6f14d786b6245e9a4e054e3005b9007
+2025-04-14 17:46:54,030 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:46:57,518 - apscheduler.scheduler - INFO - Removed job 0a6e0d64381746009c5bf7f48d1372b9
+2025-04-14 17:46:57,662 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-14 17:47:00,476 - apscheduler.scheduler - INFO - Removed job bae0b92ffed84a65be7a595cd97fbd26
+2025-04-14 21:09:39,755 - telegram.ext - ERROR - Network Retry Loop (Bootstrap Initialize Application): Failed run number 0 of 0. Aborting.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 93, in do_action
+    return await action_cb()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 486, in initialize
+    await self.bot.initialize()
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 308, in initialize
+    await super().initialize()
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 835, in initialize
+    await self.get_me()
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 1969, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 967, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 301, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-04-15 02:21:46,351 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-15 02:21:46,351 - telegram.ext.Application - INFO - Application started
+2025-04-15 02:21:58,405 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:22:00,046 - apscheduler.scheduler - INFO - Removed job 2d4605b684b74e1bb8c394c19387a8ff
+2025-04-15 02:22:00,449 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:22:04,347 - apscheduler.scheduler - INFO - Removed job 147ea640e6234abd9a2930265081560b
+2025-04-15 02:22:04,553 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:22:07,018 - apscheduler.scheduler - INFO - Removed job 4197600f8a5547ec8cad58c051cc75b7
+2025-04-15 02:22:12,400 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:22:17,972 - apscheduler.scheduler - INFO - Removed job 591824f7b47a4e8d982acfb4ad8df3e1
+2025-04-15 02:22:34,979 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 136, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.READ_NUM_BYTES, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 658, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 4593, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 301, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ReadError: 
+2025-04-15 02:22:35,837 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:22:42,793 - apscheduler.scheduler - INFO - Removed job df5b2b8eafab45c188e9ef65b0e86255
+2025-04-15 02:22:43,797 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:22:48,205 - apscheduler.scheduler - INFO - Removed job 14d9ea90a2414c6e9626c729c30c006d
+2025-04-15 02:22:48,635 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:22:51,002 - apscheduler.scheduler - INFO - Removed job 5eaad1072577456f9bb3c0ddaea862d4
+2025-04-15 02:49:42,947 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-15 02:49:42,996 - telegram.ext.Application - INFO - Application started
+2025-04-15 02:49:44,417 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:49:47,198 - apscheduler.scheduler - INFO - Removed job 851e8a94e06c4ce1ba6927b7577712a5
+2025-04-15 02:49:47,338 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:49:48,908 - apscheduler.scheduler - INFO - Removed job 16e0850f3f0e4a1893a05d0d96809c13
+2025-04-15 02:50:15,120 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:50:20,013 - apscheduler.scheduler - INFO - Removed job 538c04bdc94f4d8cb8fe7c6f4fa84ab7
+2025-04-15 02:50:20,161 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:50:22,857 - apscheduler.scheduler - INFO - Removed job 203f795343fd4a4594bf40920944ab00
+2025-04-15 02:51:04,306 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:51:05,674 - apscheduler.scheduler - INFO - Removed job 054a4539856d4c0bbdffe558bcbc4a49
+2025-04-15 02:51:05,817 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:51:07,021 - apscheduler.scheduler - INFO - Removed job 9bd032b11cd14e699b18a478a829874d
+2025-04-15 02:51:37,400 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:51:38,752 - apscheduler.scheduler - INFO - Removed job cb3a79c2937f496caca213a9364e0e1c
+2025-04-15 02:51:39,033 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:51:41,504 - apscheduler.scheduler - INFO - Removed job b00d31e8d6234215b6116db887803539
+2025-04-15 02:51:41,703 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:51:43,422 - apscheduler.scheduler - INFO - Removed job c0e0c6f81c084792b2dc4c3781102dc5
+2025-04-15 02:52:18,961 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:52:20,750 - apscheduler.scheduler - INFO - Removed job 4dc2bdce58174a1699b0cac19daa313e
+2025-04-15 02:52:20,876 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:52:23,432 - apscheduler.scheduler - INFO - Removed job 263f7e0bfc5e4dc6a22c2b14d03c74a5
+2025-04-15 02:52:27,422 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:53:08,150 - apscheduler.scheduler - INFO - Removed job 991ed175d25d4f899c412dd6abe3f5a1
+2025-04-15 02:53:08,275 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:53:16,929 - apscheduler.scheduler - INFO - Removed job 8adb1a209b63497eab7ee6685afb669d
+2025-04-15 02:53:18,924 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:53:24,052 - apscheduler.scheduler - INFO - Removed job 2f3c701af4714d0c85a67ac36bbe87de
+2025-04-15 02:53:24,053 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:53:28,373 - apscheduler.scheduler - INFO - Removed job 352f606d11d04f9e80482fe90b530bf8
+2025-04-15 02:53:28,907 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:53:35,858 - apscheduler.scheduler - INFO - Removed job 17399c6b8e5f4d9d829e0df036c0ae7c
+2025-04-15 02:53:36,208 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:53:38,436 - apscheduler.scheduler - INFO - Removed job 58bb116b00fa43eda865968f568ebc91
+2025-04-15 02:53:43,698 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:54:29,510 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 136, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.READ_NUM_BYTES, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 658, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 4593, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 301, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ReadError: 
+2025-04-15 02:54:32,734 - apscheduler.scheduler - INFO - Removed job 927fe5f21fa041ed94f002fb10c4c231
+2025-04-15 02:54:35,638 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:54:37,003 - apscheduler.scheduler - INFO - Removed job e470bcb0749a40f59f79b54bf74d5da9
+2025-04-15 02:54:37,841 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:54:40,587 - apscheduler.scheduler - INFO - Removed job 42b58f513b0142eaaf9770b7f1a9625f
+2025-04-15 02:54:40,868 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:54:42,654 - apscheduler.scheduler - INFO - Removed job 51fcbeadb3be49fa9a639bbbd616a023
+2025-04-15 02:55:46,652 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:55:47,633 - apscheduler.scheduler - INFO - Removed job 4e27f51914674336b9bcaa89ac24082d
+2025-04-15 02:55:48,201 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:55:52,057 - apscheduler.scheduler - INFO - Removed job 5b35a59193c246d2ac42b0dc500f7370
+2025-04-15 02:55:52,353 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:55:55,147 - apscheduler.scheduler - INFO - Removed job c01ba5e2a0db4846902ecde9cd6ecab0
+2025-04-15 02:57:54,504 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:57:55,979 - apscheduler.scheduler - INFO - Removed job 09f6287b34e7467c84cce9322855e993
+2025-04-15 02:57:56,549 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:57:59,224 - apscheduler.scheduler - INFO - Removed job a1047dab9f2b42ae88d9bace540d141f
+2025-04-15 02:57:59,498 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 02:58:01,649 - apscheduler.scheduler - INFO - Removed job a2d8c807dfd541288571dbc60bebd010
+2025-04-15 03:00:05,710 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:00:11,830 - apscheduler.scheduler - INFO - Removed job c273979c15da40cdb141f9f32591a4e5
+2025-04-15 03:00:12,461 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:00:15,136 - apscheduler.scheduler - INFO - Removed job 92584c07925b49be9f9e0973042f9a7c
+2025-04-15 03:02:19,144 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:02:21,209 - apscheduler.scheduler - INFO - Removed job e08afc13b35c4825a7ffe3eb7a7b8870
+2025-04-15 03:02:21,483 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:02:23,019 - apscheduler.scheduler - INFO - Removed job a77d0d8f8ee74fae89f349892ed01bc0
+2025-04-15 03:05:26,776 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:05:29,185 - apscheduler.scheduler - INFO - Removed job 8530ebc8b2f74ea8998e96fa849b489e
+2025-04-15 03:05:29,489 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:05:31,747 - apscheduler.scheduler - INFO - Removed job 64a10181a0ea426ab9a4b258fb3e2328
+2025-04-15 03:05:39,391 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:06:35,239 - apscheduler.scheduler - INFO - Removed job 0023d8c5512f407b9370e224044eb1e7
+2025-04-15 03:06:35,954 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:06:44,097 - apscheduler.scheduler - INFO - Removed job 7106048ec10c40b3ac229fcee42a369f
+2025-04-15 03:06:47,121 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:07:21,265 - apscheduler.scheduler - INFO - Removed job d774b9c3c42345279492555b76971ebb
+2025-04-15 03:07:22,172 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:07:25,372 - apscheduler.scheduler - INFO - Removed job 0bb9879f38a043b4913b769bd1e7ddb3
+2025-04-15 03:07:25,642 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:07:29,753 - apscheduler.scheduler - INFO - Removed job e0a667c016e941a58ceb74bfee424c24
+2025-04-15 03:07:37,256 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:09:12,894 - apscheduler.scheduler - INFO - Removed job 440a00e3911945168fd4950fecf60179
+2025-04-15 03:09:13,612 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:09:15,815 - apscheduler.scheduler - INFO - Removed job 03a107c2ece74ac79554028f550ec502
+2025-04-15 03:09:19,012 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:09:24,841 - apscheduler.scheduler - INFO - Removed job 162389d8ee404759a7aafcddd406e82e
+2025-04-15 03:09:25,858 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:09:34,117 - apscheduler.scheduler - INFO - Removed job e1ae753af3b842efb1e23ad4831c57f2
+2025-04-15 03:09:34,757 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:09:36,520 - apscheduler.scheduler - INFO - Removed job c613290e91e04062855ab92cb1a95327
+2025-04-15 03:12:51,336 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:12:53,892 - apscheduler.scheduler - INFO - Removed job 5c76daab94294c208c4fc080283637c5
+2025-04-15 03:12:54,246 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:12:55,937 - apscheduler.scheduler - INFO - Removed job 6a367f4b8a1240f49a3dbdbf16fda01d
+2025-04-15 03:12:56,056 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:12:58,339 - apscheduler.scheduler - INFO - Removed job 068083a7072c4fd0b8c86c49bf343244
+2025-04-15 03:13:09,859 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-15 03:14:00,385 - apscheduler.scheduler - INFO - Removed job d314234fe8674057960b0656bfdb1bd0
+2025-04-15 03:15:46,367 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-04-15 03:15:46,368 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-04-15 03:15:46,387 - telegram.ext.Application - INFO - Application.stop() complete
+2025-04-16 03:53:10,838 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-16 03:53:10,883 - telegram.ext.Application - INFO - Application started
+2025-04-16 03:53:42,813 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:54:24,842 - apscheduler.scheduler - INFO - Removed job abe728f7c87e4baeb147a7c3c7da3a73
+2025-04-16 03:54:32,129 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:54:35,645 - apscheduler.scheduler - INFO - Removed job 4b2a4f3ae63142479bdd33786f1d5d78
+2025-04-16 03:55:07,852 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:55:11,453 - apscheduler.scheduler - INFO - Removed job 4a99d828e51846b38f7e910641e0f18a
+2025-04-16 03:55:11,601 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:55:14,548 - apscheduler.scheduler - INFO - Removed job 64da39d2d10b430584d8550bcb2f5b7f
+2025-04-16 03:55:14,706 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:55:21,604 - apscheduler.scheduler - INFO - Removed job be85e18f53de42d1b6ec2bccf90b2aee
+2025-04-16 03:55:22,018 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:55:24,596 - apscheduler.scheduler - INFO - Removed job fb5c2943b65a4f94831176bfae4463ce
+2025-04-16 03:55:51,347 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:55:52,457 - apscheduler.scheduler - INFO - Removed job afe5cb4f63f84f4f9b617594e5227ad7
+2025-04-16 03:55:52,612 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:55:54,587 - apscheduler.scheduler - INFO - Removed job 11b74052f616424a9c0cc4dc73ba4a5a
+2025-04-16 03:55:54,813 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:55:59,652 - apscheduler.scheduler - INFO - Removed job abebd6b5dbfa4659b82000ced095361b
+2025-04-16 03:55:59,804 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 03:56:01,914 - apscheduler.scheduler - INFO - Removed job 5754b24aae6b495b92866f10b850ee12
+2025-04-16 04:09:54,022 - telegram.ext.Updater - ERROR - Error while calling `get_updates` one more time to mark all fetched updates as read: %s. Suppressing error to ensure graceful shutdown. When polling for updates is restarted, updates may be fetched again. Please adjust timeouts via `ApplicationBuilder` or the parameter `get_updates_request` of `Bot`.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_updater.py", line 394, in _get_updates_cleanup
+    await self.bot.get_updates(
+    ...<4 lines>...
+    )
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 658, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 4593, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 294, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2025-04-16 04:09:54,241 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-04-16 04:09:54,242 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-04-16 04:09:54,259 - telegram.ext.Application - INFO - Application.stop() complete
+2025-04-16 04:31:28,982 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-16 04:31:28,983 - telegram.ext.Application - INFO - Application started
+2025-04-16 04:33:03,808 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-16 04:33:03,810 - telegram.ext.Application - INFO - Application started
+2025-04-16 04:33:11,332 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:33:12,971 - apscheduler.scheduler - INFO - Removed job 8230719b448a4ba9879f492e3fd04444
+2025-04-16 04:33:13,243 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:33:45,696 - apscheduler.scheduler - INFO - Removed job 82d4dfc43ff44ed1b886dc36fc235041
+2025-04-16 04:33:46,085 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:33:47,686 - apscheduler.scheduler - INFO - Removed job 12bfb397f95a4cff9175b295fdb0bd50
+2025-04-16 04:34:37,261 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:34:41,250 - apscheduler.scheduler - INFO - Removed job be00b93e1fac4ea29b88e2a8666c8242
+2025-04-16 04:34:41,515 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:34:43,830 - apscheduler.scheduler - INFO - Removed job 33f65966f57a4c41b455490890429310
+2025-04-16 04:34:44,555 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:34:46,338 - apscheduler.scheduler - INFO - Removed job 8cb0f88a6aeb47db80d9368ab2f22625
+2025-04-16 04:34:46,547 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:34:50,104 - apscheduler.scheduler - INFO - Removed job e9b3e422754d443fa0184af547dff6f6
+2025-04-16 04:37:38,748 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:37:39,583 - apscheduler.scheduler - INFO - Removed job 833595b218434aac9763402114e7570b
+2025-04-16 04:37:39,889 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:37:42,085 - apscheduler.scheduler - INFO - Removed job 698cb92a922d48778a120d6345c6fe23
+2025-04-16 04:37:42,228 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:37:44,551 - apscheduler.scheduler - INFO - Removed job 98562fe300e34a20be2720f6d245471a
+2025-04-16 04:39:57,920 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:39:59,544 - apscheduler.scheduler - INFO - Removed job 0691df1c7c9b445b9e8936a2bd768c0b
+2025-04-16 04:39:59,687 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:40:01,777 - apscheduler.scheduler - INFO - Removed job a9199d328bb340d3ba7bb192896350ae
+2025-04-16 04:47:01,916 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:47:03,444 - apscheduler.scheduler - INFO - Removed job 4c62dc1acebd45058fd56f3434f2010f
+2025-04-16 04:47:03,703 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:47:09,292 - apscheduler.scheduler - INFO - Removed job a0a4cb2d2b944ee0800e922e527cc77a
+2025-04-16 04:47:09,688 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:47:14,732 - apscheduler.scheduler - INFO - Removed job fefe022748ab42a8bab414cc9eb19a98
+2025-04-16 04:47:42,987 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:47:44,436 - apscheduler.scheduler - INFO - Removed job 8cc6112a43d040c58144a8f936bb21a9
+2025-04-16 04:47:44,586 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:47:53,512 - apscheduler.scheduler - INFO - Removed job 36bde620f4e741aea69ec85d398d17a5
+2025-04-16 04:47:53,900 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:48:16,402 - apscheduler.scheduler - INFO - Removed job 250a4009be9248b59c4060fb14fb3f17
+2025-04-16 04:48:19,472 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:48:25,713 - apscheduler.scheduler - INFO - Removed job f7a0c9cd37044695b03707ee6a431796
+2025-04-16 04:48:26,174 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:48:30,775 - apscheduler.scheduler - INFO - Removed job dc69d9c41f694735bc68be5143d09339
+2025-04-16 04:51:17,167 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:51:19,318 - apscheduler.scheduler - INFO - Removed job 77d6929447574156a8a9988f092dbd76
+2025-04-16 04:51:19,591 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:51:26,837 - apscheduler.scheduler - INFO - Removed job e1a1d08527c24f5d932eeb1da55e8e43
+2025-04-16 04:51:27,263 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:51:31,992 - apscheduler.scheduler - INFO - Removed job 428f8494d9864dd7a098676c37f43f26
+2025-04-16 04:51:34,868 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:52:23,484 - apscheduler.scheduler - INFO - Removed job 215627c7003548a4a755e4cd4efe5040
+2025-04-16 04:52:23,877 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:52:33,901 - apscheduler.scheduler - INFO - Removed job f6e2446515c54b85a04802efbdb252bb
+2025-04-16 04:53:01,184 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:53:02,487 - apscheduler.scheduler - INFO - Removed job c0aeaef120e4494084fb37b94e9eee0a
+2025-04-16 04:53:02,764 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:53:06,139 - apscheduler.scheduler - INFO - Removed job cf1bf8dee0154d0784a021fc39347f8a
+2025-04-16 04:53:06,275 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:53:10,631 - apscheduler.scheduler - INFO - Removed job bc4e882b6155438eb711cbde178d74a5
+2025-04-16 04:55:00,764 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:55:03,865 - apscheduler.scheduler - INFO - Removed job b847ac1db5f5498cb2af859df65f7ca7
+2025-04-16 04:55:04,007 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:55:05,943 - apscheduler.scheduler - INFO - Removed job 505b459389cd44e0aac9ad7c91e77796
+2025-04-16 04:55:30,882 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:55:31,941 - apscheduler.scheduler - INFO - Removed job 3f876f4c62ce4563ab12b7377bc619b0
+2025-04-16 04:55:32,084 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:55:33,476 - apscheduler.scheduler - INFO - Removed job e7c51e0809b54e72a40f22bd977a5fde
+2025-04-16 04:55:33,618 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:55:34,722 - apscheduler.scheduler - INFO - Removed job 2518bd92bfe04a5896134e5c9f0f8fa8
+2025-04-16 04:55:34,999 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 04:55:36,244 - apscheduler.scheduler - INFO - Removed job 7071a0c2a04c443f82e8df11dd6d9121
+2025-04-16 04:55:38,396 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:00:38,402 - apscheduler.scheduler - INFO - Removed job 421479162dc7415191e175d40f23bb14
+2025-04-16 05:00:38,402 - apscheduler.executors.default - INFO - Running job "_trigger_timeout (trigger: date[2025-04-16 02:00:38 UTC], next run at: 2025-04-16 02:00:38 UTC)" (scheduled at 2025-04-16 02:00:38.396084+00:00)
+2025-04-16 05:00:38,931 - apscheduler.executors.default - INFO - Job "_trigger_timeout (trigger: date[2025-04-16 02:00:38 UTC], next run at: 2025-04-16 02:00:38 UTC)" executed successfully
+2025-04-16 05:01:06,594 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:01:15,449 - apscheduler.scheduler - INFO - Removed job 38c4f876fbb94cd388bffbc7d60f7f22
+2025-04-16 05:01:16,013 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:01:17,876 - apscheduler.scheduler - INFO - Removed job 9bf09d0f43c84094ad3b25c618d59d2b
+2025-04-16 05:01:18,063 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:01:23,967 - apscheduler.scheduler - INFO - Removed job 2122f1d6142f4c8085a741fe147a1382
+2025-04-16 05:01:27,875 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:01:35,732 - apscheduler.scheduler - INFO - Removed job 1b48e3797e6346868fc51d8d389cfcf2
+2025-04-16 05:01:36,119 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:01:38,002 - apscheduler.scheduler - INFO - Removed job ef59213e7cec4133b499c3ff9c0841fe
+2025-04-16 05:01:41,943 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:01:47,292 - apscheduler.scheduler - INFO - Removed job dad7474be2d246f0b09f6b83fe87421a
+2025-04-16 05:01:47,674 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:01:50,646 - apscheduler.scheduler - INFO - Removed job 9ba6613392c14af793897b8dd662e6a5
+2025-04-16 05:23:11,290 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:23:12,220 - apscheduler.scheduler - INFO - Removed job 8098696d72294ab597b076b18de82521
+2025-04-16 05:23:12,498 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:23:16,569 - apscheduler.scheduler - INFO - Removed job 75373fba3cd440ebb3e3b69db7281539
+2025-04-16 05:23:16,702 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:23:17,846 - apscheduler.scheduler - INFO - Removed job f9578af84e0f4e20acc9e4740c2a4532
+2025-04-16 05:23:22,186 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:23:25,868 - apscheduler.scheduler - INFO - Removed job a96a3548495f4f959e301971d99e77db
+2025-04-16 05:23:27,152 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:23:29,469 - apscheduler.scheduler - INFO - Removed job 98b6c620ba9748578752b4860f034ab0
+2025-04-16 05:23:29,752 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:23:30,624 - apscheduler.scheduler - INFO - Removed job 70710ee186f24c408c4d4173aaa2f9d0
+2025-04-16 05:23:30,932 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:23:32,827 - apscheduler.scheduler - INFO - Removed job e9c2fcdadafb41bf910c6b8ec550c8ab
+2025-04-16 05:23:50,195 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-04-16 05:23:50,196 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-04-16 05:23:50,214 - telegram.ext.Application - INFO - Application.stop() complete
+2025-04-16 05:24:01,779 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-16 05:24:01,780 - telegram.ext.Application - INFO - Application started
+2025-04-16 05:24:09,873 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:24:11,192 - apscheduler.scheduler - INFO - Removed job bb3391623ed4456b81992e25cf5274d0
+2025-04-16 05:24:11,496 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:24:15,538 - apscheduler.scheduler - INFO - Removed job 2ef019ccba1744b7a7352bffcde71d11
+2025-04-16 05:24:15,674 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:24:16,668 - apscheduler.scheduler - INFO - Removed job 82d5ac951dda4f1583cc83bb3807557f
+2025-04-16 05:24:20,276 - apscheduler.scheduler - INFO - Added job "_trigger_timeout" to job store "default"
+2025-04-16 05:29:20,285 - apscheduler.scheduler - INFO - Removed job e670617c043944bd85a25922cedfc312
+2025-04-16 05:29:20,285 - apscheduler.executors.default - INFO - Running job "_trigger_timeout (trigger: date[2025-04-16 02:29:20 UTC], next run at: 2025-04-16 02:29:20 UTC)" (scheduled at 2025-04-16 02:29:20.276630+00:00)
+2025-04-16 05:29:20,758 - apscheduler.executors.default - INFO - Job "_trigger_timeout (trigger: date[2025-04-16 02:29:20 UTC], next run at: 2025-04-16 02:29:20 UTC)" executed successfully
+2025-04-16 05:31:47,355 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-04-16 05:31:47,356 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-04-16 05:31:47,378 - telegram.ext.Application - INFO - Application.stop() complete
+2025-04-16 12:23:03,209 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\python\telegram\telebot_repo\telebot\ichancy.py", line 306, in second_question
+    await context.bot.send_message(chat_id=update.effective_chat.id,text="\u23f3 \u062c\u0627\u0631\u064a \u0645\u0639\u0627\u0644\u062c\u0629 \u0627\u0644\u0637\u0644\u0628...")
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 2977, in send_message
+    return await super().send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 1091, in send_message
+    return await self._send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 618, in _send_message
+    result = await super()._send_message(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 803, in _send_message
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 294, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2025-04-16 12:25:30,895 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 136, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.READ_NUM_BYTES, timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\python\telegram\telebot_repo\telebot\ichancy.py", line 429, in fallback
+    await context.bot.send_message(chat_id=update.effective_chat.id,text="\u0627\u062e\u062a\u0631 \u0625\u062c\u0631\u0627\u0621:",reply_markup=create_keyboard(main_keyboard))
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 2977, in send_message
+    return await super().send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 1091, in send_message
+    return await self._send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 618, in _send_message
+    result = await super()._send_message(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 803, in _send_message
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 294, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2025-04-16 12:27:40,344 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\python\telegram\telebot_repo\telebot\ichancy.py", line 61, in button_click
+    await context.bot.send_message(chat_id=update.effective_chat.id,text="\U0001f5a5\U0001f5a5",reply_markup=create_inline_keyboard([[InlineKeyboardButton('\u267b\ufe0f \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629',callback_data='{"chat_id":update.effective_chat.id,"amount":response_to_question1,"processid":response_to_question2,"method":charge_method}')]]))
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 2977, in send_message
+    return await super().send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 1091, in send_message
+    return await self._send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<19 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 618, in _send_message
+    result = await super()._send_message(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<21 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 803, in _send_message
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 353, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Button_data_invalid
+2025-04-16 15:39:27,988 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 658, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 4593, in get_updates
+    await self._post(
+    ^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    ),
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 301, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: 
+2025-04-16 20:54:48,579 - telegram.ext - ERROR - Network Retry Loop (Bootstrap Initialize Application): Failed run number 0 of 0. Aborting.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 277, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 93, in do_action
+    return await action_cb()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 486, in initialize
+    await self.bot.initialize()
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 308, in initialize
+    await super().initialize()
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 835, in initialize
+    await self.get_me()
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 1969, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 967, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 691, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_extbot.py", line 362, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\_bot.py", line 720, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_baserequest.py", line 304, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\request\_httpxrequest.py", line 301, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-04-16 20:55:58,238 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\python\telegram\telebot_repo\telebot\ichancy.py", line 145, in keyboard_button_click
+    await context.bot.send_message(chat_id=update.effective_chat.id,text="\u0623\u0647\u0644\u0627\u064b \u0628\u0643 \u0641\u064a \u0646\u0627\u0641\u0630\u0629 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645",reply_markup=create_keyboard(keyboard))
+                                                                                                                                   ^^^^^^^^
+UnboundLocalError: cannot access local variable 'keyboard' where it is not associated with a value
+2025-04-16 20:56:17,905 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\python\telegram\telebot_repo\telebot\ichancy.py", line 163, in keyboard_button_click
+    await context.bot.send_message(chat_id=update.effective_chat.id,text="\u0627\u062e\u062a\u0631 \u0625\u062c\u0631\u0627\u0621:", reply_markup=create_keyboard(main_keyboard))
+                                                                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_keyboard' where it is not associated with a value
+2025-04-16 20:56:27,847 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\python\telegram\telebot_repo\telebot\ichancy.py", line 163, in keyboard_button_click
+    await context.bot.send_message(chat_id=update.effective_chat.id,text="\u0627\u062e\u062a\u0631 \u0625\u062c\u0631\u0627\u0621:", reply_markup=create_keyboard(main_keyboard))
+                                                                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_keyboard' where it is not associated with a value
+2025-04-16 20:57:49,690 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        update, application, handler_check_result, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\BaselSlieman\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\python\telegram\telebot_repo\telebot\ichancy.py", line 163, in keyboard_button_click
+    await context.bot.send_message(chat_id=update.effective_chat.id,text="\u0627\u062e\u062a\u0631 \u0625\u062c\u0631\u0627\u0621:", reply_markup=create_keyboard(main_keyboard))
+                                                                                                                     ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_keyboard' where it is not associated with a value
