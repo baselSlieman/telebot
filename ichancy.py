@@ -7,29 +7,37 @@ from telegram.error import TimedOut
 import requests
 
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.ERROR,filename='bot.log'
 )
 # set higher logging level for httpx to avoid all GET and POST requests being logged
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 
-TOKEN = "7654562303:AAF5LToQwvIpC08kC167GN3BNoFAXgZS8qw"
-base_url = "https://demo92.visual-host.com/api/"
-# FIRST_QUESTION, SECOND_QUESTION = range(2)
-FIRST_QUESTION, SECOND_QUESTION, THIRD_QUESTION, FOURTH_QUESTION, FIFTH_QUESTION, SIXTH_QUESTION,SEVENTH_QUESTION,EIGHTH_QUESTION  = range(8)
+# Golden Bot token: 7754268472:AAE8AKqFrS0Q5wNSDNFMboOFvUGVF5VZwG4
+# yochance bot: 7654562303:AAF5LToQwvIpC08kC167GN3BNoFAXgZS8qw
+TOKEN = "7754268472:AAE8AKqFrS0Q5wNSDNFMboOFvUGVF5VZwG4"
+
+# local url: http://localhost:8000/api/
+# hosting url: https://demo92.visual-host.com/api/
+base_url = "http://localhost:8000/api/"
+
+
+FIRST_QUESTION, SECOND_QUESTION, THIRD_QUESTION, FOURTH_QUESTION, FIFTH_QUESTION, SIXTH_QUESTION,SEVENTH_QUESTION,EIGHTH_QUESTION,NINETH_QUESTION  = range(9)
 CHAT_TIMEOUT=300
 
+# Access Tiken Local: 'Bearer 1|JrqSlcvhpxY6Gdv2Wiggyrg7n3Fd8Q16mza8AeArc249fbcf'
+# Access Tiken hosting: 'Bearer 2|ASAuZhU3p1PHeLOfteuXWR6KTuPuaqsDk4h9hfEb01914cf0'
 headers = {
-    'Content-Type': 'application/json', 
+    'Content-Type': 'application/json',
     'Accept': 'application/json',  # نوع المحتوى
-    'Authorization': 'Bearer 2|ASAuZhU3p1PHeLOfteuXWR6KTuPuaqsDk4h9hfEb01914cf0'  # معلومات المصادقة مع access token
+    'Authorization': 'Bearer 1|JrqSlcvhpxY6Gdv2Wiggyrg7n3Fd8Q16mza8AeArc249fbcf'  # معلومات المصادقة مع access token
 }
-# 1|JrqSlcvhpxY6Gdv2Wiggyrg7n3Fd8Q16mza8AeArc249fbcf
+
 main_keyboard = [
                     [KeyboardButton('🌳 Ichancy | ايشانسي 🌳')], [KeyboardButton('شحن في البوت 🔽'),KeyboardButton('سحب من البوت 🔼')],
-                    [KeyboardButton('💵 الرصيد'),KeyboardButton('📋 الشروط والأحكام')],
-                    [KeyboardButton('📨 تواصل مع الدعم')]
+                    [KeyboardButton('💵 الرصيد'),KeyboardButton('👥 نافذة المستخدم')],
+                    [KeyboardButton('📨 تواصل مع الدعم'),KeyboardButton('📋 الشروط والأحكام')],
             ]
 def create_keyboard(keyboard):
         return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
@@ -40,14 +48,27 @@ def create_inline_keyboard(keyboard):
 async def button_click(update: Update, context: CallbackContext):
     query = update.callback_query
     data = query.data.split(':')
-    if data[0] == "undoWithdraw":
-        response = requests.post(base_url+"undo_withdraw",json={"withdrawId":data[1]},headers=headers)
-        if response.status_code == 200 and (response.json())['status']=="success":
-            await query.edit_message_text(text=f"🔅 تم التراجع عن الطلب ذو المعرف: {data[1]} بنجاح")
-        elif response.status_code == 200 and (response.json())['status']=="failed":
-            await query.edit_message_text(text=f"⛔️ {(response.json())['message']}")
+    if data[0] == "retryCheckCash":
+        response = requests.post(base_url+"charge",json={"chat_id":update.effective_chat.id,"amount":data[1],"processid":data[2],"method":data[3]},headers=headers)
+        if response.status_code== 200:
+            response_json = response.json()
+            await context.bot.send_message(chat_id=update.effective_chat.id,text=response_json["message"])
+            if response_json["status"]== "failed":
+                await context.bot.send_message(chat_id=update.effective_chat.id,text="إعادة المحاولة \n إدخال مبلغ الدفع:")
+                return FIRST_QUESTION
+            if response_json["status"]== "failedsy":
+                await context.bot.send_message(chat_id=update.effective_chat.id,text="❗️ يمكنك إعادة المحاولة",reply_markup=create_inline_keyboard([[InlineKeyboardButton('♻️ إعادة المحاولة',callback_data=f'retryCheckCash:{data[1]}:{data[2]}:{data[3]}')]]))
         else:
-            await query.edit_message_text(text=f"⛔️ حدث خطأ أثناء عملية التراجع")
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+        ConversationHandler.END
+    elif data[0] == "undoWithdraw":
+            response = requests.post(base_url+"undo_withdraw",json={"withdrawId":data[1]},headers=headers)
+            if response.status_code == 200 and (response.json())['status']=="success":
+                await query.edit_message_text(text=f"🔅 تم التراجع عن الطلب ذو المعرف: {data[1]} بنجاح")
+            elif response.status_code == 200 and (response.json())['status']=="failed":
+                await query.edit_message_text(text=f"⛔️ {(response.json())['message']}")
+            else:
+                await query.edit_message_text(text=f"⛔️ حدث خطأ أثناء عملية التراجع")
     await query.answer()
     
 
@@ -73,7 +94,7 @@ async def start(update: Update,context: ContextTypes.DEFAULT_TYPE):
             await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
     except requests.exceptions.RequestException as e:
         await context.bot.send_message(chat_id=update.effective_chat.id,text="⚠️ البوت يخضع للصيانة حالياً، الرجاء المحاولة في وقتٍ لاحق")
-
+    ConversationHandler.END
 # handle_message بشكل عام
 # async def handle_message(update: Update,context: ContextTypes.DEFAULT_TYPE):
 #     await context.bot.send_message(chat_id=update.effective_chat.id,text=update)
@@ -116,18 +137,29 @@ async def keyboard_button_click(update: Update, context: CallbackContext):
                 await context.bot.send_message(chat_id=update.effective_chat.id,text=f"حدث الخطأ التالي: {response_msg['message']}",reply_markup=create_keyboard(keyboard))
         else:
             await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+    elif user_choice == '👥 نافذة المستخدم':
+        keyboard = [
+                    [KeyboardButton('🥇 الملكي'),KeyboardButton('👥 نظام العمولة')],
+                    [KeyboardButton('🎁 إهداء رصيد'),KeyboardButton('🎁 كود الهدايا')],
+                    [KeyboardButton('الرئيسية')]
+            ]
+        await context.bot.send_message(chat_id=update.effective_chat.id,text="أهلاً بك في نافذة المستخدم",reply_markup=create_keyboard(keyboard))
     elif user_choice == 'شحن في البوت 🔽':
         keyboard = [
             [KeyboardButton('سيريتل كاش'),KeyboardButton('MTN كاش')], [KeyboardButton('بنك بيمو'),KeyboardButton('الرئيسية')],
         ]
         await context.bot.send_message(chat_id=update.effective_chat.id,text="🔻 أقل قيمة للشحن هي 5,000 🔻\nوأي قيمة أقل من 5,000 لا يمكن شحنها أو استرجاعها\n\nاختر طريقة الدفع:",reply_markup=create_keyboard(keyboard))
-    elif user_choice == 'سيريتل كاش':
-         await context.bot.send_message(chat_id=update.effective_chat.id,text="كود التحويل: <b><code>28274537</code></b>", parse_mode='HTML')
-         await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل المبلغ")
-         context.user_data['current_state'] = FIRST_QUESTION
-         return FIRST_QUESTION
-    elif user_choice in ("MTN كاش","بنك بيمو"):
-        await context.bot.send_message(chat_id=update.effective_chat.id,text=f"⛔️ <b>طريقة الدفع: {user_choice}، غير متاحة حالياً</b>", parse_mode='HTML')
+    elif user_choice in ('سيريتل كاش',"MTN كاش","بنك بيمو"):
+         context.user_data['charge_method'] = user_choice
+         if user_choice == 'سيريتل كاش':
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="كود التحويل: <b><code>28274537</code></b>", parse_mode='HTML')
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل المبلغ")
+            context.user_data['current_state'] = FIRST_QUESTION
+            return FIRST_QUESTION
+         else:
+            await context.bot.send_message(chat_id=update.effective_chat.id,text=f"⛔️ <b>طريقة الدفع: {user_choice}، غير متاحة حالياً</b>", parse_mode='HTML') 
+    # elif user_choice in ("MTN كاش","بنك بيمو"):
+    #     await context.bot.send_message(chat_id=update.effective_chat.id,text=f"⛔️ <b>طريقة الدفع: {user_choice}، غير متاحة حالياً</b>", parse_mode='HTML')
     elif user_choice == 'الرئيسية':
          await context.bot.send_message(chat_id=update.effective_chat.id,text="اختر إجراء:", reply_markup=create_keyboard(main_keyboard))
          return ConversationHandler.END
@@ -166,11 +198,48 @@ async def keyboard_button_click(update: Update, context: CallbackContext):
         await context.bot.send_message(chat_id=update.effective_chat.id,text="@Bass889h",reply_markup=create_keyboard(main_keyboard))
     elif user_choice == 'سحب من البوت 🔼':
             keyboard = [
+                    [KeyboardButton('سيريتل'),KeyboardButton('MTN')],[KeyboardButton('بيمو'),KeyboardButton('الهرم')],[KeyboardButton('الفؤاد'),KeyboardButton('الرئيسية')],
+            ]
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="♻️ اختر طريقة السحب:",reply_markup=create_keyboard(keyboard))
+    elif user_choice in ('سيريتل','MTN','بيمو','الهرم','الفؤاد'):
+            keyboard = [
                     [KeyboardButton('الرئيسية')],
             ]
-            await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل كود التحويل الخاص بك:",reply_markup=create_keyboard(keyboard))
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="🆔 أدخل رقم/كود التحويل الخاص بك:",reply_markup=create_keyboard(keyboard))
             context.user_data['current_state'] = SEVENTH_QUESTION
+            context.user_data['withdraw_method'] = user_choice
             return SEVENTH_QUESTION
+    elif user_choice == '🎁 كود الهدايا':
+            keyboard = [
+                    [KeyboardButton('الرئيسية')],
+            ]
+            await context.bot.send_message(
+                chat_id=update.effective_chat.id,text="يتوفر قريباً...",reply_markup=create_keyboard(keyboard))
+    elif user_choice == '🎁 إهداء رصيد':
+        keyboard = [
+                    [KeyboardButton('الرئيسية')],
+            ]
+        await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ يتوفر قريباً...",reply_markup=create_keyboard(keyboard))
+    elif user_choice == '🥇 الملكي':
+            keyboard = [
+                    [KeyboardButton('الرئيسية')],
+            ]
+            await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text="""⏳ يتوفر قريباً...
+🥇 حيث سيتم تمييز المشتركين لدينا الأعلى مساهمة، وسيتم منحهم جوائز ومكافآت دورية""",
+                reply_markup=create_keyboard(keyboard))
+    elif user_choice == '👥 نظام العمولة':
+            keyboard = [
+                    [KeyboardButton('الرئيسية')],
+            ]
+            await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text="""⏳ يتوفر قريباً...
+📈 حيث يحصل المشترك الذي يساهم في دعوة مشتركين آخرين لاستخدام البوت على نسبة مئوية من قيمة المبيعات كعمولة عن جهده.
+                    """,
+                reply_markup=create_keyboard(keyboard))
+            
     elif user_choice == '📋 الشروط والأحكام':
             keyboard = [
                     [KeyboardButton('الرئيسية')],
@@ -249,13 +318,16 @@ async def second_question(update: Update, context: CallbackContext) -> int:
     await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ جاري معالجة الطلب...")
     response_to_question1 = context.user_data['response_to_question1']
     response_to_question2 = context.user_data['response_to_question2']
-    response = requests.post(base_url+"charge",json={"chat_id":update.effective_chat.id,"amount":response_to_question1,"processid":response_to_question2},headers=headers)
+    charge_method = context.user_data['charge_method']
+    response = requests.post(base_url+"charge",json={"chat_id":update.effective_chat.id,"amount":response_to_question1,"processid":response_to_question2,"method":charge_method},headers=headers)
     if response.status_code== 200:
         response_json = response.json()
         await context.bot.send_message(chat_id=update.effective_chat.id,text=response_json["message"],reply_markup=create_keyboard(keyboard))
         if response_json["status"]== "failed":
             await context.bot.send_message(chat_id=update.effective_chat.id,text="إعادة المحاولة \n إدخال مبلغ الدفع:")
             return FIRST_QUESTION
+        if response_json["status"]== "failedsy":
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="❗️ يمكنك إعادة المحاولة",reply_markup=create_inline_keyboard([[InlineKeyboardButton('♻️ إعادة المحاولة',callback_data=f'retryCheckCash:{response_to_question1}:{response_to_question2}:{charge_method}')]]))
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
     return ConversationHandler.END
@@ -299,8 +371,19 @@ async def sixth_question(update: Update, context: CallbackContext) -> int:
 async def seventh_question(update: Update, context: CallbackContext) -> int:
     user_response = update.message.text
     context.user_data['response_to_question7'] = user_response
+    if context.user_data['withdraw_method'] in ("الهرم","الفؤاد"):
+        context.user_data['current_state']=NINETH_QUESTION
+        await update.message.reply_text("👤 أدخل الاسم الثلاثي للمستفيد:")
+        return  NINETH_QUESTION    
     context.user_data['current_state'] = EIGHTH_QUESTION
-    await update.message.reply_text("أدخل مبلغ السحب:")
+    await update.message.reply_text("💵 أدخل مبلغ السحب:")
+    return  EIGHTH_QUESTION
+
+async def ninth_question(update: Update, context: CallbackContext) -> int:
+    user_response = update.message.text
+    context.user_data['response_to_question9'] = user_response
+    context.user_data['current_state'] = EIGHTH_QUESTION
+    await update.message.reply_text("💵 أدخل مبلغ السحب:")
     return  EIGHTH_QUESTION
 
 async def eighth_question(update: Update, context: CallbackContext) -> int:
@@ -312,7 +395,12 @@ async def eighth_question(update: Update, context: CallbackContext) -> int:
     await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ جاري معالجة الطلب...")
     response_to_question7 = context.user_data['response_to_question7']
     response_to_question8 = context.user_data['response_to_question8']
-    response = requests.post(base_url+"withdraw",json={"chat_id":update.effective_chat.id,"amount":response_to_question8,"code":response_to_question7},headers=headers)
+    withdraw_method = context.user_data['withdraw_method']
+    jsons={"chat_id":update.effective_chat.id,"amount":response_to_question8,"code":response_to_question7,"method":withdraw_method}
+    if withdraw_method in ("الهرم","الفؤاد"):
+        jsons['subscriber']=context.user_data['response_to_question9']
+    
+    response = requests.post(base_url+"withdraw",json=jsons,headers=headers)
     if response.status_code== 200:
         response_json = response.json()
         await context.bot.send_message(chat_id=update.effective_chat.id,text=response_json["message"],reply_markup=create_keyboard(keyboard))
@@ -391,14 +479,17 @@ async def fallback(update: Update, context: CallbackContext) -> int:
     if current_state == EIGHTH_QUESTION:
         await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل مبلغ صحيح",reply_markup=create_keyboard(keyboard))
         return EIGHTH_QUESTION
-        
+    if current_state == NINETH_QUESTION:
+        await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل اسم ثلاثي صحيح:",reply_markup=create_keyboard(keyboard))
+        return NINETH_QUESTION   
     else:
         await update.message.reply_text("⛔️ عذرًا، لم أتمكن من فهم طلبك. يرجى استخدام الأوامر المتاحة والإجابة بشكل صحيح .")
         return ConversationHandler.END
     
     
 async def timeout(update:Update, context:CallbackContext):
-   await update.message.reply_text('انتهى الوقت المخصص لإجابتك , الرجاء البدء من جديد')
+   keyboard = [[KeyboardButton('الرئيسية')]]
+   await update.message.reply_text('🕒 انتهى الوقت المخصص لإجابتك',reply_markup=create_keyboard(keyboard))
 
 if __name__ == '__main__':
     application = ApplicationBuilder().token(TOKEN).build()
@@ -422,6 +513,7 @@ if __name__ == '__main__':
             SIXTH_QUESTION: [MessageHandler(filters.TEXT & filters.Regex(r'^([\s\d]+)$'), sixth_question)],
             SEVENTH_QUESTION: [MessageHandler(filters.TEXT & ~filters.Text(["الرئيسية", "إنهاء"]), seventh_question)],
             EIGHTH_QUESTION: [MessageHandler(filters.TEXT & filters.Regex(r'^([\s\d]+)$'),eighth_question)],
+            NINETH_QUESTION: [MessageHandler(filters.TEXT & ~filters.Text(["الرئيسية", "إنهاء"]),ninth_question)],
             ConversationHandler.TIMEOUT: [MessageHandler(filters.TEXT | filters.COMMAND, timeout)],
         },
         fallbacks=[MessageHandler(filters.ALL, fallback)],
@@ -467,3 +559,27 @@ if __name__ == '__main__':
 # notes:
 # pip install rembg
 # pip install python-telegram-bot
+
+
+# <?php
+
+# $username = 'uc28a3ecf573f05d0-zone-custom-region-sy-asn-AS29256';
+# $password = 'uc28a3ecf573f05d0';
+# $PROXY_PORT = 2334;
+# $PROXY_DNS = '43.153.237.55';
+
+# $urlToGet = 'http://ip-api.com/json';
+
+# $ch = curl_init();
+# curl_setopt($ch, CURLOPT_URL, $urlToGet);
+# curl_setopt($ch, CURLOPT_HEADER, 0);
+# curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+# curl_setopt($ch, CURLOPT_PROXYPORT, $PROXY_PORT);
+# curl_setopt($ch, CURLOPT_PROXYTYPE, 'HTTP');
+# curl_setopt($ch, CURLOPT_PROXY, $PROXY_DNS);
+# curl_setopt($ch, CURLOPT_PROXYUSERPWD, $username.':'.$password);
+# $data = curl_exec($ch);
+# curl_close($ch);
+
+# echo $data;
+# ?>
