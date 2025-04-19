@@ -1,10 +1,11 @@
 import logging
 import os
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, Update,error
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, Update,error,InputFile
 from telegram.ext import ApplicationBuilder,ConversationHandler, CommandHandler, ContextTypes, MessageHandler, filters, CallbackContext,CallbackQueryHandler
 from telegram.error import TimedOut
 # from rembg import remove
 import requests
+import sqlite3
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.ERROR,filename='bot.log'
@@ -23,7 +24,7 @@ TOKEN = "7754268472:AAE8AKqFrS0Q5wNSDNFMboOFvUGVF5VZwG4"
 base_url = "https://demo92.visual-host.com/api/"
 
 
-FIRST_QUESTION, SECOND_QUESTION, THIRD_QUESTION, FOURTH_QUESTION, FIFTH_QUESTION, SIXTH_QUESTION,SEVENTH_QUESTION,EIGHTH_QUESTION,NINETH_QUESTION  = range(9)
+FIRST_QUESTION, SECOND_QUESTION, THIRD_QUESTION, FOURTH_QUESTION, FIFTH_QUESTION, SIXTH_QUESTION,SEVENTH_QUESTION,EIGHTH_QUESTION,NINETH_QUESTION,TENTH_QUESTION,ELEVENTH_QUESTION  = range(11)
 CHAT_TIMEOUT=300
 
 # Access Tiken Local: 'Bearer 1|JrqSlcvhpxY6Gdv2Wiggyrg7n3Fd8Q16mza8AeArc249fbcf'
@@ -61,6 +62,38 @@ async def button_click(update: Update, context: CallbackContext):
         else:
             await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
         ConversationHandler.END
+    elif data[0] == "ex_ich_charge":
+        response = requests.post(base_url+"ex_ich_charge",json={"chat_id":update.effective_chat.id,"orderId":data[1]},headers=headers)
+        if response.status_code== 200:
+            response_json = response.json()
+            await context.bot.send_message(chat_id=update.effective_chat.id,text=response_json['message'], parse_mode='HTML')
+        else:
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+    elif data[0] == "ex_bemo_charge":
+        response = requests.post(base_url+"ex_bemo_charge",json={"chat_id":update.effective_chat.id,"orderId":data[1]},headers=headers)
+        if response.status_code== 200:
+            response_json = response.json()
+            await context.bot.send_message(chat_id=update.effective_chat.id,text=response_json['message'], parse_mode='HTML')
+        else:
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+    elif data[0] == "pending_bemo_charge":
+        await context.bot.send_message(chat_id=data[1],text="📥 يتم الآن تنفيذ عملية الشحن", parse_mode='HTML')
+    elif data[0] == "reject_bemo_charge":
+        response = requests.post(base_url+"reject_bemo_charge",json={"chat_id":update.effective_chat.id,"orderId":data[2]},headers=headers)
+        if response.status_code== 200:
+            response_json = response.json()
+            await context.bot.send_message(chat_id=update.effective_chat.id,text=response_json['message'], parse_mode='HTML')
+        else:
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+    elif data[0] == "pending_ich_charge":
+        await context.bot.send_message(chat_id=data[1],text="🌳 طلبك قيد المعالجة، سيتم إعلامك بالنتيجة خلال دقائق", parse_mode='HTML')
+    elif data[0] == "ex_withdraw":
+        response = requests.post(base_url+"ex_withdraw",json={"chat_id":update.effective_chat.id,"orderId":data[1]},headers=headers)
+        if response.status_code== 200:
+            response_json = response.json()
+            await context.bot.send_message(chat_id=update.effective_chat.id,text=response_json['message'], parse_mode='HTML')
+        else:
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
     elif data[0] == "undoWithdraw":
             response = requests.post(base_url+"undo_withdraw",json={"withdrawId":data[1]},headers=headers)
             if response.status_code == 200 and (response.json())['status']=="success":
@@ -71,30 +104,65 @@ async def button_click(update: Update, context: CallbackContext):
                 await query.edit_message_text(text=f"⛔️ حدث خطأ أثناء عملية التراجع")
     await query.answer()
     
+def check_user_exists(user_id):
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM users WHERE user_id = ?", (user_id,))
+    result = c.fetchone()
+    conn.close()
+    return result is not None
+
+def check_ichancy_exists(user_id):
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM ichancy WHERE user_id = ?", (user_id,))
+    result = c.fetchone()
+    conn.close()
+    return result is not None
+
+def get_username(user_id):
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    c.execute("SELECT username FROM ichancy WHERE user_id = ?", (user_id,))
+    result = c.fetchone()
+    conn.close()
+    return result[0] if result is not None else None
 
 # context: bot info # update: update indo
 async def start(update: Update,context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ يتم بدء البوت، الرجاء الانتظار...")
-    data = {
-        'id': update.effective_chat.id,
-        'username': update.effective_chat.username,
-        'first_name': update.effective_chat.first_name,
-        'last_name': update.effective_chat.last_name
-    }
-    try:
-        response = requests.post(base_url+"start",json=data,headers=headers)
-        response.raise_for_status()
-        if response.status_code==200:
-            response_json = response.json()
-            if response_json['status']=="success":
-                await context.bot.send_message(chat_id=update.effective_chat.id,text="مرحبا بك في بوت You Chance",reply_markup=create_keyboard(main_keyboard))
+    user_id = update.effective_user.id
+    if check_user_exists(user_id):
+        await update.message.reply_text('أهلاً بك مرة أخرى!',reply_markup=create_keyboard(main_keyboard))
+    else:
+        await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ يتم بدء البوت، الرجاء الانتظار...")
+        data = {
+            'id': update.effective_chat.id,
+            'username': update.effective_chat.username,
+            'first_name': update.effective_chat.first_name,
+            'last_name': update.effective_chat.last_name
+        }
+        try:
+            response = requests.post(base_url+"start",json=data,headers=headers)
+            response.raise_for_status()
+            if response.status_code==200:
+                response_json = response.json()
+                if response_json['status']=="success":
+                    await context.bot.send_message(chat_id=update.effective_chat.id,text="مرحباً بك",reply_markup=create_keyboard(main_keyboard))
+                    conn = sqlite3.connect('users.db')
+                    c = conn.cursor()
+                    c.execute("INSERT INTO users (user_id) VALUES (?)", (user_id,))
+                    conn.commit()
+                    conn.close()
+                else:
+                    await context.bot.send_message(chat_id=update.effective_chat.id,text="خطأ أثناء بدء البوت، الرجاء البدء من جديد")
             else:
-                await context.bot.send_message(chat_id=update.effective_chat.id,text="خطأ أثناء بدء البوت، الرجاء البدء من جديد")
-        else:
-            await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
-    except requests.exceptions.RequestException as e:
-        await context.bot.send_message(chat_id=update.effective_chat.id,text="⚠️ البوت يخضع للصيانة حالياً، الرجاء المحاولة في وقتٍ لاحق")
+                await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+        except requests.exceptions.RequestException as e:
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="⚠️ البوت يخضع للصيانة حالياً، الرجاء المحاولة في وقتٍ لاحق")
     ConversationHandler.END
+
+
+
 # handle_message بشكل عام
 # async def handle_message(update: Update,context: ContextTypes.DEFAULT_TYPE):
 #     await context.bot.send_message(chat_id=update.effective_chat.id,text=update)
@@ -106,37 +174,49 @@ async def syriatel(update: Update, context: CallbackContext):
 
 async def keyboard_button_click(update: Update, context: CallbackContext):
     user_choice = update.message.text
+    user_id = update.effective_user.id
     if user_choice == '🌳 Ichancy | ايشانسي 🌳':
-        response = requests.post(base_url+"ichancy",json={"chat_id":update.effective_chat.id},headers=headers)
-        if response.status_code==200 :
-            response_msg = response.json()
-            if response_msg['message'] == "notexist":
-                keyboard = [
-                    [KeyboardButton('إنشاء حساب')], [KeyboardButton('الرئيسية')],
-                ]
-                await context.bot.send_message(chat_id=update.effective_chat.id,text="ليس لديك حساب",reply_markup=create_keyboard(keyboard))
-            elif response_msg['message'] == "requested":
-                keyboard = [
-                    [KeyboardButton('الرئيسية')]
-                ]
-                await context.bot.send_message(chat_id=update.effective_chat.id,text="لقد طلبت للتو إنشاء حساب، وسيتم إرساله لك في أقرب وقت",reply_markup=create_keyboard(keyboard))
-            elif response_msg['message'] == "exist":
-                keyboard = [
-                    [KeyboardButton('السحب من الحساب'),KeyboardButton('شحن الحساب')],[KeyboardButton('رصيد أيشانسي'),KeyboardButton('الرئيسية')]
-                ]
-                await context.bot.send_message(chat_id=update.effective_chat.id,text=f"الحساب: {response_msg["username"]}",reply_markup=create_keyboard(keyboard))
-            elif response_msg['message'] == "error_playerId":
-                keyboard = [
-                    [KeyboardButton('الرئيسية')]
-                ]
-                await context.bot.send_message(chat_id=update.effective_chat.id,text="فشل الحصول على معرف الحساب، الرجاء إعادة المحاولة",reply_markup=create_keyboard(keyboard))
-            else:
-                keyboard = [
-                    [KeyboardButton('الرئيسية')]
-                ]
-                await context.bot.send_message(chat_id=update.effective_chat.id,text=f"حدث الخطأ التالي: {response_msg['message']}",reply_markup=create_keyboard(keyboard))
+        if check_ichancy_exists(user_id):
+            keyboard = [
+                        [KeyboardButton('السحب من الحساب'),KeyboardButton('شحن الحساب')],[KeyboardButton('رصيد أيشانسي'),KeyboardButton('الرئيسية')]
+                    ]
+            await context.bot.send_message(chat_id=update.effective_chat.id,text=f"الحساب: {get_username(user_id)}",reply_markup=create_keyboard(keyboard))
         else:
-            await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+            response = requests.post(base_url+"ichancy",json={"chat_id":update.effective_chat.id},headers=headers)
+            if response.status_code==200 :
+                response_msg = response.json()
+                if response_msg['message'] == "notexist":
+                    keyboard = [
+                        [KeyboardButton('إنشاء حساب')], [KeyboardButton('الرئيسية')],
+                    ]
+                    await context.bot.send_message(chat_id=update.effective_chat.id,text="ليس لديك حساب",reply_markup=create_keyboard(keyboard))
+                elif response_msg['message'] == "requested":
+                    keyboard = [
+                        [KeyboardButton('الرئيسية')]
+                    ]
+                    await context.bot.send_message(chat_id=update.effective_chat.id,text="لقد طلبت للتو إنشاء حساب، وسيتم إرساله لك في أقرب وقت",reply_markup=create_keyboard(keyboard))
+                elif response_msg['message'] == "exist":
+                    keyboard = [
+                        [KeyboardButton('السحب من الحساب'),KeyboardButton('شحن الحساب')],[KeyboardButton('رصيد أيشانسي'),KeyboardButton('الرئيسية')]
+                    ]
+                    conn = sqlite3.connect('users.db')
+                    c = conn.cursor()
+                    c.execute("INSERT INTO ichancy (user_id,username) VALUES (?,?)", (user_id,response_msg["username"]))
+                    conn.commit()
+                    conn.close()
+                    await context.bot.send_message(chat_id=update.effective_chat.id,text=f"الحساب: {response_msg["username"]}",reply_markup=create_keyboard(keyboard))
+                elif response_msg['message'] == "error_playerId":
+                    keyboard = [
+                        [KeyboardButton('الرئيسية')]
+                    ]
+                    await context.bot.send_message(chat_id=update.effective_chat.id,text="فشل الحصول على معرف الحساب، الرجاء إعادة المحاولة",reply_markup=create_keyboard(keyboard))
+                else:
+                    keyboard = [
+                        [KeyboardButton('الرئيسية')]
+                    ]
+                    await context.bot.send_message(chat_id=update.effective_chat.id,text=f"حدث الخطأ التالي: {response_msg['message']}",reply_markup=create_keyboard(keyboard))
+            else:
+                await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
     elif user_choice == '👥 نافذة المستخدم':
         keyboard = [
                     [KeyboardButton('🥇 الملكي'),KeyboardButton('👥 نظام العمولة')],
@@ -150,12 +230,24 @@ async def keyboard_button_click(update: Update, context: CallbackContext):
         ]
         await context.bot.send_message(chat_id=update.effective_chat.id,text="🔻 أقل قيمة للشحن هي 5,000 🔻\nوأي قيمة أقل من 5,000 لا يمكن شحنها أو استرجاعها\n\nاختر طريقة الدفع:",reply_markup=create_keyboard(keyboard))
     elif user_choice in ('سيريتل كاش',"MTN كاش","بنك بيمو"):
+         keyboard = [
+            [KeyboardButton('الرئيسية')],
+         ]
          context.user_data['charge_method'] = user_choice
          if user_choice == 'سيريتل كاش':
-            await context.bot.send_message(chat_id=update.effective_chat.id,text="كود التحويل: <b><code>28274537</code></b>", parse_mode='HTML')
-            await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل المبلغ")
+            with open('sycash.png', 'rb') as image:
+                photo = InputFile(image)
+            await context.bot.send_photo(chat_id=update.effective_chat.id, photo=photo, caption="أرسل إلى أحد الأرقام التالية:\n<b><code>28274537</code></b>\n<b><code>40136956</code></b>\n<b><code>19030899</code></b>\nثم ادخل قيمة المبلغ المرسل  👇",reply_markup=create_keyboard(keyboard), parse_mode='HTML')
+            # await context.bot.send_message(chat_id=update.effective_chat.id,text="كود التحويل: <b><code>28274537</code></b>", parse_mode='HTML')
+            # await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل المبلغ")
             context.user_data['current_state'] = FIRST_QUESTION
             return FIRST_QUESTION
+         if user_choice == "بنك بيمو":
+            with open('bemo.jpg', 'rb') as image:
+                photo = InputFile(image)
+            await context.bot.send_photo(chat_id=update.effective_chat.id, photo=photo, caption="أرسل المبلغ المراد شحنه إلى حساب بنك بيمو الخاص بالبوت التالي:\n\nرقم الحساب: <code>050112697880013000000</code>\n\nثم قم بإرسال رقم العملية المكون من 9 أرقام  👇",reply_markup=create_keyboard(keyboard), parse_mode='HTML')
+            context.user_data['current_state'] = TENTH_QUESTION
+            return TENTH_QUESTION
          else:
             await context.bot.send_message(chat_id=update.effective_chat.id,text=f"⛔️ <b>طريقة الدفع: {user_choice}، غير متاحة حالياً</b>", parse_mode='HTML') 
     # elif user_choice in ("MTN كاش","بنك بيمو"):
@@ -205,7 +297,7 @@ async def keyboard_button_click(update: Update, context: CallbackContext):
             keyboard = [
                     [KeyboardButton('الرئيسية')],
             ]
-            await context.bot.send_message(chat_id=update.effective_chat.id,text="🆔 أدخل رقم/كود التحويل الخاص بك:",reply_markup=create_keyboard(keyboard))
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل رقم الهاتف الخاص بك لاستلام المبلغ:",reply_markup=create_keyboard(keyboard))
             context.user_data['current_state'] = SEVENTH_QUESTION
             context.user_data['withdraw_method'] = user_choice
             return SEVENTH_QUESTION
@@ -300,6 +392,32 @@ async def fourth_question(update: Update, context: CallbackContext) -> int:
         return ConversationHandler.END
     except Exception as e:
         print(f"حدث خطأ: {e}")
+
+
+async def tenth_question(update: Update, context: CallbackContext) -> int:
+    user_response = update.message.text
+    context.user_data['response_to_question10'] = user_response
+    context.user_data['current_state'] = ELEVENTH_QUESTION
+    await update.message.reply_text("أدخل رقم المبلغ الذي تم إرساله:")
+    return ELEVENTH_QUESTION
+
+async def eleventh_question(update: Update, context: CallbackContext) -> int:
+    keyboard = [
+            [KeyboardButton('الرئيسية')],
+    ]
+    user_response = update.message.text
+    context.user_data['response_to_question11'] = user_response
+    await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ جاري معالجة الطلب...")
+    response_to_question10 = context.user_data['response_to_question10']
+    response_to_question11 = context.user_data['response_to_question11']
+    charge_method = context.user_data['charge_method']
+    response = requests.post(base_url+"chargeBemo",json={"chat_id":update.effective_chat.id,"amount":response_to_question11,"processid":response_to_question10,"method":charge_method},headers=headers)
+    if response.status_code== 200:
+        response_json = response.json()
+        await context.bot.send_message(chat_id=update.effective_chat.id,text=response_json["message"],reply_markup=create_keyboard(keyboard))
+    else:
+        await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+    return ConversationHandler.END
 
 async def first_question(update: Update, context: CallbackContext) -> int:
     user_response = update.message.text
@@ -417,18 +535,7 @@ async def eighth_question(update: Update, context: CallbackContext) -> int:
     return ConversationHandler.END 
 
       
-# async def first_question(update: Update, context: CallbackContext) -> int:
-#     user_response = update.message.text
-#     context.user_data['response_to_question1'] = user_response
-#     await update.message.reply_text("سؤال آخر؟")
-#     return SECOND_QUESTION
 
-# async def second_question(update: Update, context: CallbackContext) -> int:
-#     user_response = update.message.text
-#     context.user_data['response_to_question2'] = user_response
-#     await update.message.reply_text("شكرًا لك. تم استلام الإجابات.")
-
-    # يمكنك هنا استخدام الإجابات بالطريقة التي ترغب فيها
     
 async def fallback(update: Update, context: CallbackContext) -> int:
     # if context.error.message == 'Timed out':
@@ -481,7 +588,13 @@ async def fallback(update: Update, context: CallbackContext) -> int:
         return EIGHTH_QUESTION
     if current_state == NINETH_QUESTION:
         await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل اسم ثلاثي صحيح:",reply_markup=create_keyboard(keyboard))
-        return NINETH_QUESTION   
+        return NINETH_QUESTION  
+    if current_state == TENTH_QUESTION:
+        await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل رقم عملية صحيح مكون من 9 أرقام:",reply_markup=create_keyboard(keyboard))
+        return TENTH_QUESTION
+    if current_state == ELEVENTH_QUESTION:
+        await context.bot.send_message(chat_id=update.effective_chat.id,text="أدخل مبلغ صحيح:",reply_markup=create_keyboard(keyboard))
+        return ELEVENTH_QUESTION  
     else:
         await update.message.reply_text("⛔️ عذرًا، لم أتمكن من فهم طلبك. يرجى استخدام الأوامر المتاحة والإجابة بشكل صحيح .")
         return ConversationHandler.END
@@ -492,6 +605,12 @@ async def timeout(update:Update, context:CallbackContext):
    await update.message.reply_text('🕒 انتهى الوقت المخصص لإجابتك',reply_markup=create_keyboard(keyboard))
 
 if __name__ == '__main__':
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS ichancy (user_id INTEGER PRIMARY KEY,username TEXT)''')
+    conn.commit()
+    conn.close()
     application = ApplicationBuilder().token(TOKEN).build()
     # application.updater.bot.get_updates(timeout=2)
     # commend handlers
@@ -514,6 +633,8 @@ if __name__ == '__main__':
             SEVENTH_QUESTION: [MessageHandler(filters.TEXT & ~filters.Text(["الرئيسية", "إنهاء"]), seventh_question)],
             EIGHTH_QUESTION: [MessageHandler(filters.TEXT & filters.Regex(r'^([\s\d]+)$'),eighth_question)],
             NINETH_QUESTION: [MessageHandler(filters.TEXT & ~filters.Text(["الرئيسية", "إنهاء"]),ninth_question)],
+            TENTH_QUESTION: [MessageHandler(filters.TEXT & ~filters.Text(["الرئيسية", "إنهاء"]) & filters.Regex(r'(\b\d{9})$'),tenth_question)],
+            ELEVENTH_QUESTION: [MessageHandler(filters.TEXT & ~filters.Text(["الرئيسية", "إنهاء"]) & filters.Regex(r'^([\s\d]+)$'),eleventh_question)],
             ConversationHandler.TIMEOUT: [MessageHandler(filters.TEXT | filters.COMMAND, timeout)],
         },
         fallbacks=[MessageHandler(filters.ALL, fallback)],
