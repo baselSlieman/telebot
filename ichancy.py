@@ -240,9 +240,10 @@ def check_and_insert_pay():
 async def start(update: Update,context: ContextTypes.DEFAULT_TYPE):
     try:
         user_id = update.effective_user.id
+        chat_member = await context.bot.get_chat_member('-1002514923260', user_id)
         if check_user_exists(user_id):
             await update.message.reply_text('أهلاً بك مرة أخرى!',reply_markup=create_keyboard(main_keyboard))
-        elif (await context.bot.get_chat_member('-1002514923260', user_id)).status == "left":            
+        elif chat_member and chat_member.status == "left":         
             await update.message.reply_text(cond_terms,reply_markup=create_inline_keyboard([[InlineKeyboardButton('الموافقة والانضمام للقناة ✅',url='https://t.me/goldenbotx')]]))
         else:
             await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ يتم بدء البوت، الرجاء الانتظار...")
