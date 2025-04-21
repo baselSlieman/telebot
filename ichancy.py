@@ -240,7 +240,7 @@ def check_and_insert_pay():
 async def start(update: Update,context: ContextTypes.DEFAULT_TYPE):
     try:
         user_id = update.effective_user.id
-        chat_member = await context.bot.get_chat_member('-1002514923260', user_id)
+        chat_member = await context.bot.get_chat_member('@goldenbotx', user_id)
         if check_user_exists(user_id):
             await update.message.reply_text('أهلاً بك مرة أخرى!',reply_markup=create_keyboard(main_keyboard))
         elif chat_member and chat_member.status == "left":         
