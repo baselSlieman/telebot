@@ -8,7 +8,7 @@ import requests
 import sqlite3
 
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.ERROR,filename='bot.log'
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.ERROR
 )
 # set higher logging level for httpx to avoid all GET and POST requests being logged
 logging.getLogger("httpx").setLevel(logging.WARNING)
@@ -238,42 +238,48 @@ def check_and_insert_pay():
 
 # context: bot info # update: update indo
 async def start(update: Update,context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
-    if check_user_exists(user_id):
-        await update.message.reply_text('أهلاً بك مرة أخرى!',reply_markup=create_keyboard(main_keyboard))
-    elif (await context.bot.get_chat_member('-1002514923260', user_id)).status == "left":            
-        await update.message.reply_text(cond_terms,reply_markup=create_inline_keyboard([[InlineKeyboardButton('الموافقة والانضمام للقناة ✅',url='https://t.me/goldenbotx')]]))
-    else:
-        await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ يتم بدء البوت، الرجاء الانتظار...")
-        data = {
-            'id': update.effective_chat.id,
-            'username': update.effective_chat.username,
-            'first_name': update.effective_chat.first_name,
-            'last_name': update.effective_chat.last_name
-        }
-        if context.args:
-            data['affiliate_code'] = context.args[0] 
-        try:
-            response = requests.post(base_url+"start",json=data,headers=headers)
-            response.raise_for_status()
-            if response.status_code==200:
-                response_json = response.json()
-                if response_json['status']=="success":
-                    await context.bot.send_message(chat_id=update.effective_chat.id,text="مرحباً بك",reply_markup=create_keyboard(main_keyboard))
-                    if not check_user_exists(user_id):
-                        conn = sqlite3.connect('users.db')
-                        c = conn.cursor()
-                        c.execute("INSERT INTO users (user_id) VALUES (?)", (user_id,))
-                        conn.commit()
-                        conn.close()
-                    if context.args:
-                        await context.bot.send_message(chat_id=context.args[0],text="قام شخص ما بإنشاء حساب عن طريق رابط نظام العمولة الخاص بك سيتم إضافة 3% من قيمة المبالغ التي يقوم بشحنها في البوت 👍")
+    try:
+        user_id = update.effective_user.id
+        if check_user_exists(user_id):
+            await update.message.reply_text('أهلاً بك مرة أخرى!',reply_markup=create_keyboard(main_keyboard))
+        elif (await context.bot.get_chat_member('-1002514923260', user_id)).status == "left":            
+            await update.message.reply_text(cond_terms,reply_markup=create_inline_keyboard([[InlineKeyboardButton('الموافقة والانضمام للقناة ✅',url='https://t.me/goldenbotx')]]))
+        else:
+            await context.bot.send_message(chat_id=update.effective_chat.id,text="⏳ يتم بدء البوت، الرجاء الانتظار...")
+            data = {
+                'id': update.effective_chat.id,
+                'username': update.effective_chat.username,
+                'first_name': update.effective_chat.first_name,
+                'last_name': update.effective_chat.last_name
+            }
+            if context.args:
+                data['affiliate_code'] = context.args[0] 
+            try:
+                response = requests.post(base_url+"start",json=data,headers=headers)
+                response.raise_for_status()
+                if response.status_code==200:
+                    response_json = response.json()
+                    if response_json['status']=="success":
+                        await context.bot.send_message(chat_id=update.effective_chat.id,text="مرحباً بك",reply_markup=create_keyboard(main_keyboard))
+                        if not check_user_exists(user_id):
+                            conn = sqlite3.connect('users.db')
+                            c = conn.cursor()
+                            c.execute("INSERT INTO users (user_id) VALUES (?)", (user_id,))
+                            conn.commit()
+                            conn.close()
+                        if context.args:
+                            await context.bot.send_message(chat_id=context.args[0],text="قام شخص ما بإنشاء حساب عن طريق رابط نظام العمولة الخاص بك سيتم إضافة 3% من قيمة المبالغ التي يقوم بشحنها في البوت 👍")
+                    else:
+                        await context.bot.send_message(chat_id=update.effective_chat.id,text="خطأ أثناء بدء البوت، الرجاء البدء من جديد")
                 else:
-                    await context.bot.send_message(chat_id=update.effective_chat.id,text="خطأ أثناء بدء البوت، الرجاء البدء من جديد")
-            else:
-                await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
-        except requests.exceptions.RequestException as e:
-            await context.bot.send_message(chat_id=update.effective_chat.id,text="⚠️ البوت يخضع للصيانة حالياً، الرجاء المحاولة في وقتٍ لاحق")
+                    await context.bot.send_message(chat_id=update.effective_chat.id,text="البوت يواجه مشكلة بالاتصال بالسيرفر، الرجاء المحاولة في وقتٍ لاحق")
+                    print(response.json())
+            except requests.exceptions.RequestException as e:
+                await context.bot.send_message(chat_id=update.effective_chat.id,text="⚠️ البوت يخضع للصيانة حالياً، الرجاء المحاولة في وقتٍ لاحق")
+                print(e)
+    except Exception as ex:
+        error_message = f"حدث خطأ غير متوقع:\n {ex}"
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=error_message)
     return ConversationHandler.END
 
 
