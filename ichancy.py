@@ -22,7 +22,7 @@ TOKEN = "7754268472:AAE8AKqFrS0Q5wNSDNFMboOFvUGVF5VZwG4"
 # local url: http://localhost:8000/api/
 # hosting url: https://demo92.visual-host.com/api/
 # railway hosting url: https://youchance-production.up.railway.app/
-base_url = "https://youchance-production.up.railway.app/"
+base_url = "https://youchance-production.up.railway.app/api/"
 
 
 FIRST_QUESTION, SECOND_QUESTION, THIRD_QUESTION, FOURTH_QUESTION, FIFTH_QUESTION, SIXTH_QUESTION,SEVENTH_QUESTION,EIGHTH_QUESTION,NINETH_QUESTION,TENTH_QUESTION,ELEVENTH_QUESTION,TWELFTH_QUESTION,THIRTEENTH_QUESTION,FOURTEENTH_QUESTION  = range(14)
