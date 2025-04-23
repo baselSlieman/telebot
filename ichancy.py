@@ -21,7 +21,8 @@ TOKEN = "7754268472:AAE8AKqFrS0Q5wNSDNFMboOFvUGVF5VZwG4"
 #asd
 # local url: http://localhost:8000/api/
 # hosting url: https://demo92.visual-host.com/api/
-base_url = "https://demo92.visual-host.com/api/"
+# railway hosting url: https://youchance-production.up.railway.app/
+base_url = "https://youchance-production.up.railway.app/"
 
 
 FIRST_QUESTION, SECOND_QUESTION, THIRD_QUESTION, FOURTH_QUESTION, FIFTH_QUESTION, SIXTH_QUESTION,SEVENTH_QUESTION,EIGHTH_QUESTION,NINETH_QUESTION,TENTH_QUESTION,ELEVENTH_QUESTION,TWELFTH_QUESTION,THIRTEENTH_QUESTION,FOURTEENTH_QUESTION  = range(14)
@@ -29,10 +30,11 @@ CHAT_TIMEOUT=300
 
 # Access Tiken Local: 'Bearer 1|JrqSlcvhpxY6Gdv2Wiggyrg7n3Fd8Q16mza8AeArc249fbcf'
 # Access Tiken hosting: 'Bearer 2|ASAuZhU3p1PHeLOfteuXWR6KTuPuaqsDk4h9hfEb01914cf0'
+# Railway Access Tiken hosting: 'Bearer 1|TXTbYR3jLgNhAKjXQJb4H3G4LG2zZEFnkUBqNAYP853b61a5'
 headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',  # نوع المحتوى
-    'Authorization': 'Bearer 2|ASAuZhU3p1PHeLOfteuXWR6KTuPuaqsDk4h9hfEb01914cf0'  # معلومات المصادقة مع access token
+    'Authorization': 'Bearer 1|TXTbYR3jLgNhAKjXQJb4H3G4LG2zZEFnkUBqNAYP853b61a5'  # معلومات المصادقة مع access token
 }
 
 main_keyboard = [
@@ -240,7 +242,7 @@ def check_and_insert_pay():
 async def start(update: Update,context: ContextTypes.DEFAULT_TYPE):
     try:
         user_id = update.effective_user.id
-        chat_member = await context.bot.get_chat_member('@goldenbotx', user_id)
+        chat_member = await context.bot.get_chat_member('-1002514923260', user_id)
         if check_user_exists(user_id):
             await update.message.reply_text('أهلاً بك مرة أخرى!',reply_markup=create_keyboard(main_keyboard))
         elif chat_member and chat_member.status == "left":         
@@ -846,7 +848,7 @@ if __name__ == '__main__':
             ELEVENTH_QUESTION: [MessageHandler(filters.TEXT & ~filters.Text(["الرئيسية", "إنهاء"]) & filters.Regex(r'^([\s\d]+)$'),eleventh_question)],
             TWELFTH_QUESTION: [MessageHandler(filters.TEXT & filters.Regex(r'^([\s\d]+)$'),twelfth_question)],
             THIRTEENTH_QUESTION: [MessageHandler(filters.TEXT & filters.Regex(r'^([\s\d]+)$'),thirteenth_question)],
-            FOURTEENTH_QUESTION: [MessageHandler(filters.TEXT,fourteenth_question)],
+            FOURTEENTH_QUESTION: [MessageHandler(filters.TEXT & ~filters.Text(["الرئيسية", "إنهاء"]),fourteenth_question)],
             ConversationHandler.TIMEOUT: [MessageHandler(filters.TEXT | filters.COMMAND, timeout)],
         },
         fallbacks=[MessageHandler(filters.ALL, fallback)],
