@@ -24,11 +24,11 @@ logger = logging.getLogger(__name__)
 
 # Golden Bot token: 7754268472:AAE8AKqFrS0Q5wNSDNFMboOFvUGVF5VZwG4
 # yochance bot: 7654562303:AAF5LToQwvIpC08kC167GN3BNoFAXgZS8qw
-TOKEN = "7654562303:AAF5LToQwvIpC08kC167GN3BNoFAXgZS8qw"
+TOKEN = "7754268472:AAE8AKqFrS0Q5wNSDNFMboOFvUGVF5VZwG4"
 
 # local url: http://localhost:8000/api/
 # hosting url: https://demo92.visual-host.com/api/
-base_url = "http://localhost:8000/api/"
+base_url = "https://demo92.visual-host.com/api/"
 
 FIRST_QUESTION, SECOND_QUESTION, THIRD_QUESTION, FOURTH_QUESTION, FIFTH_QUESTION, SIXTH_QUESTION,SEVENTH_QUESTION,EIGHTH_QUESTION,NINETH_QUESTION,TENTH_QUESTION,ELEVENTH_QUESTION,TWELFTH_QUESTION,THIRTEENTH_QUESTION,FOURTEENTH_QUESTION  = range(14)
 CHAT_TIMEOUT=300
@@ -38,7 +38,7 @@ CHAT_TIMEOUT=300
 headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',  # نوع المحتوى
-    'Authorization': 'Bearer 1|JrqSlcvhpxY6Gdv2Wiggyrg7n3Fd8Q16mza8AeArc249fbcf'  # معلومات المصادقة مع access token
+    'Authorization': 'Bearer 2|ASAuZhU3p1PHeLOfteuXWR6KTuPuaqsDk4h9hfEb01914cf0'  # معلومات المصادقة مع access token
 }
 
 main_keyboard = [

@@ -5,14 +5,13 @@ import string
 import requests
 import subprocess
 
-base_url = "http://localhost:8000/api/"
+base_url = "https://demo92.visual-host.com/api/"
 
 dashboard_headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',  # نوع المحتوى
-    'Authorization': 'Bearer 1|JrqSlcvhpxY6Gdv2Wiggyrg7n3Fd8Q16mza8AeArc249fbcf'  # معلومات المصادقة مع access token
+    'Authorization': 'Bearer 2|ASAuZhU3p1PHeLOfteuXWR6KTuPuaqsDk4h9hfEb01914cf0'  # معلومات المصادقة مع access token
 }
-
 # email = "asdxxasxerw@agent.nsp"
 # ich_username = "bas2e2elsd123"
 # ich_password = "as2dasd123"
